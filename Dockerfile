@@ -1,11 +1,5 @@
-FROM saas_module
-
-RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main"
-RUN add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
-RUN apt-get update
-
-RUN apt-get -y install imagemagick
-
+FROM jujhars13/docker-imagemagick
+RUN wget -O- "http://s3.amazonaws.com/babl/babl-server_linux_amd64.gz" | gunzip > /bin/babl-server && chmod +x /bin/babl-server
 ADD app /bin/app
 RUN chmod +x /bin/app
-
+CMD ["babl-server"]
