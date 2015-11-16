@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 
 if [[ $QUALITY && ${QUALITY-x} ]]; then
