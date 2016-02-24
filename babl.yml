@@ -1,3 +1,4 @@
 id: larskluge/image-resize
-mem: 128
+mem: 0
 cpus: 0.5
+instances: 2
