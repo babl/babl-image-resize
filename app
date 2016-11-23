@@ -1,5 +1,9 @@
-#!/bin/bash -x
+#!/bin/bash
 
+# be verbose in debug mode
+if [[ $BABL_DEBUG ]]; then
+  set -x
+fi
 
 if [[ $QUALITY && ${QUALITY-x} ]]; then
   quality="-quality $QUALITY"
