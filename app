@@ -13,6 +13,13 @@ if [[ $DPI && ${DPI-x} ]]; then
   dpi="-density $DPI"
 fi
 
-format=${FORMAT-png}
+# Maximize by default
+minimize="^"
+if [[ $MINIMIZE && ${MINIMIZE-x} ]]; then
+  minimize=""
+fi
 
-convert -units PixelsPerInch -background none - -resize "${WIDTH}x${HEIGHT}^" -gravity center -extent "${WIDTH}x${HEIGHT}" $dpi $quality $format:-
+format=${FORMAT-png}
+background=${BACKGROUND-none}
+
+convert -units PixelsPerInch -background $background - -resize "${WIDTH}x${HEIGHT}$minimize" -gravity center -extent "${WIDTH}x${HEIGHT}" $dpi $quality $format:-
